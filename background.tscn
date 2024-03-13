@@ -6,7 +6,19 @@
 [node name="Background" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -192)
+position = Vector2(-1.52588e-05, 5.72205e-06)
+scale = Vector2(0.524286, 0.478571)
+texture = ExtResource("1_c6w5i")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(704, 3.25261e-19)
+scale = Vector2(0.524286, 0.478571)
+texture = ExtResource("1_c6w5i")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(1408, -1.36424e-12)
+scale = Vector2(0.524286, 0.478571)
 texture = ExtResource("1_c6w5i")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_30faw")]
+position = Vector2(1, 22)

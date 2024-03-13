@@ -1,19 +1,23 @@
 [gd_scene load_steps=4 format=3 uid="uid://b5fv402jfajl8"]
 
 [ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_xrbev"]
-[ext_resource type="Texture2D" uid="uid://cvu7o058eyemm" path="res://icon.svg" id="2_q5vsh"]
+[ext_resource type="Texture2D" uid="uid://ddbb2d5r3n46o" path="res://Dude.png" id="2_02xfn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lpt7e"]
-size = Vector2(128, 128)
+size = Vector2(64, 240)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_xrbev")
+speed = null
 
 [node name="Icon2" type="Sprite2D" parent="."]
-texture = ExtResource("2_q5vsh")
+scale = Vector2(5.62, 6.9)
+texture = ExtResource("2_02xfn")
 
 [node name="Camera2D2" type="Camera2D" parent="."]
+position = Vector2(0, -32)
+zoom = Vector2(2.1, 2.1)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_lpt7e")
