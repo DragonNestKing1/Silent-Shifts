@@ -1,19 +1,62 @@
-[gd_scene load_steps=4 format=3 uid="uid://b5fv402jfajl8"]
+[gd_scene load_steps=10 format=3 uid="uid://b5fv402jfajl8"]
 
 [ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_xrbev"]
-[ext_resource type="Texture2D" uid="uid://ddbb2d5r3n46o" path="res://Dude.png" id="2_02xfn"]
+[ext_resource type="Texture2D" uid="uid://x3agjiaej787" path="res://pixilart-sprite.png" id="3_yexk2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lpt7e"]
 size = Vector2(64, 240)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_mt7vk"]
+atlas = ExtResource("3_yexk2")
+region = Rect2(0, 0, 25, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_otvpd"]
+atlas = ExtResource("3_yexk2")
+region = Rect2(0, 0, 25, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c025s"]
+atlas = ExtResource("3_yexk2")
+region = Rect2(25, 0, 25, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eh111"]
+atlas = ExtResource("3_yexk2")
+region = Rect2(50, 0, 25, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7kf22"]
+atlas = ExtResource("3_yexk2")
+region = Rect2(75, 0, 25, 35)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2pvw3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mt7vk")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_otvpd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c025s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eh111")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7kf22")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_xrbev")
-speed = null
-
-[node name="Icon2" type="Sprite2D" parent="."]
-scale = Vector2(5.62, 6.9)
-texture = ExtResource("2_02xfn")
 
 [node name="Camera2D2" type="Camera2D" parent="."]
 position = Vector2(0, -32)
@@ -21,3 +64,8 @@ zoom = Vector2(2.1, 2.1)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_lpt7e")
+
+[node name="Icon2" type="AnimatedSprite2D" parent="."]
+scale = Vector2(5.62, 6.9)
+sprite_frames = SubResource("SpriteFrames_2pvw3")
+animation = &"idle"
