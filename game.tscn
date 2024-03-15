@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://nl27dil6gloh"]
+
+[ext_resource type="PackedScene" uid="uid://dsxxohplbqdt" path="res://background.tscn" id="1_jpbj2"]
+[ext_resource type="PackedScene" uid="uid://b5fv402jfajl8" path="res://character.tscn" id="2_7ek61"]
+[ext_resource type="PackedScene" uid="uid://cb4gesb1xua3k" path="res://obstacle.tscn" id="3_3ws3d"]
+
+[node name="GAME" type="Node2D"]
+
+[node name="Background" parent="." instance=ExtResource("1_jpbj2")]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_7ek61")]
+position = Vector2(-960, 0)
+
+[node name="Obstacle" parent="." instance=ExtResource("3_3ws3d")]
+position = Vector2(-448, 0)
+
+[node name="Obstacle2" parent="." instance=ExtResource("3_3ws3d")]
