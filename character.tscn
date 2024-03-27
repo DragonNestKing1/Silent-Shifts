@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://b5fv402jfajl8"]
+[gd_scene load_steps=12 format=3 uid="uid://b5fv402jfajl8"]
 
 [ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_xrbev"]
+[ext_resource type="Texture2D" uid="uid://ruf3mdiv6m8j" path="res://chatbubble.png" id="3_gudef"]
 [ext_resource type="Texture2D" uid="uid://x3agjiaej787" path="res://pixilart-sprite.png" id="3_yexk2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lpt7e"]
@@ -54,6 +55,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ijir1"]
+size = Vector2(160, 20)
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_xrbev")
@@ -65,7 +69,36 @@ zoom = Vector2(2.1, 2.1)
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_lpt7e")
 
-[node name="Icon2" type="AnimatedSprite2D" parent="."]
+[node name="Character" type="AnimatedSprite2D" parent="."]
 scale = Vector2(5.62, 6.9)
 sprite_frames = SubResource("SpriteFrames_2pvw3")
 animation = &"idle"
+
+[node name="TalkCollision" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TalkCollision"]
+position = Vector2(48, -32)
+shape = SubResource("RectangleShape2D_ijir1")
+
+[node name="Chatbubble" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(114.125, -134.125)
+scale = Vector2(5.19167, 3.85833)
+texture = ExtResource("3_gudef")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Chatbubble"]
+anchors_preset = -1
+anchor_left = 0.178
+anchor_top = 0.276
+anchor_right = 0.178
+anchor_bottom = 0.276
+offset_left = -14.9949
+offset_top = -14.9863
+offset_right = 4.0051
+offset_bottom = 2.01374
+size_flags_horizontal = 0
+autowrap_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[connection signal="body_entered" from="TalkCollision" to="." method="body_entered"]
+[connection signal="body_exited" from="TalkCollision" to="." method="body_exited"]
