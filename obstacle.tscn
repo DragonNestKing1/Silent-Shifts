@@ -1,14 +1,47 @@
-[gd_scene load_steps=3 format=3 uid="uid://cb4gesb1xua3k"]
+[gd_scene load_steps=8 format=3 uid="uid://cb4gesb1xua3k"]
 
+[ext_resource type="Script" path="res://obstacle.gd" id="1_gh62n"]
 [ext_resource type="Texture2D" uid="uid://cvu7o058eyemm" path="res://icon.svg" id="1_txgjj"]
+[ext_resource type="Texture2D" uid="uid://ruf3mdiv6m8j" path="res://chatbubble.png" id="3_pvahv"]
+[ext_resource type="FontFile" uid="uid://cttshydfn16t8" path="res://zxSpectrumExpanded.ttf" id="4_54ahn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i3omg"]
 size = Vector2(128, 128)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dho42"]
+
+[sub_resource type="Theme" id="Theme_2dvva"]
+default_font = ExtResource("4_54ahn")
+
 [node name="Obstacle" type="CharacterBody2D"]
+script = ExtResource("1_gh62n")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_txgjj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_i3omg")
+
+[node name="Chatbubble" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-128, -128)
+scale = Vector2(6.25834, 3.85833)
+texture = ExtResource("3_pvahv")
+flip_h = true
+
+[node name="TextSizer" type="Area2D" parent="Chatbubble"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chatbubble/TextSizer"]
+position = Vector2(-5.45273, -23.2937)
+scale = Vector2(0.4, 0.4)
+shape = SubResource("RectangleShape2D_dho42")
+disabled = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Chatbubble/TextSizer/CollisionShape2D"]
+offset_left = -13.0
+offset_top = 41.0
+offset_right = 38.0
+offset_bottom = 82.0
+theme = SubResource("Theme_2dvva")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "Okay?"

@@ -3,7 +3,7 @@ extends CharacterBody2D
 var code_work = true
 var talking_range = false
 @export var speed = 400
-
+@export var chatting_now = false
 
 
 func movement():
@@ -37,6 +37,9 @@ func conversation():
 	# add short dialogue in game, maybe becomes more bubbly with more interactions.
 	if talking_range and Input.is_action_just_pressed("interact"):
 		get_node("Chatbubble").set_visible(true)
+		await get_tree().create_timer(2.0).timeout
+		get_node("Chatbubble").set_visible(false)
+		chatting_now = true
 		
 
 func _physics_process(_delta):
