@@ -37,9 +37,11 @@ func conversation():
 	# add short dialogue in game, maybe becomes more bubbly with more interactions.
 	if talking_range and Input.is_action_just_pressed("interact"):
 		get_node("Chatbubble").set_visible(true)
+		chatting_now = true
 		await get_tree().create_timer(2.0).timeout
 		get_node("Chatbubble").set_visible(false)
-		chatting_now = true
+		chatting_now = false
+		
 		
 
 func _physics_process(_delta):
@@ -55,3 +57,7 @@ func body_entered(_body):
 
 func body_exited(_body):
 	talking_range = false
+
+
+func _on_winner_area_entered(area):
+	get_node("WIN").set_visible(true)

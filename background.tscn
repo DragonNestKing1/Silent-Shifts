@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dsxxohplbqdt"]
+[gd_scene load_steps=6 format=3 uid="uid://dsxxohplbqdt"]
 
 [ext_resource type="Texture2D" uid="uid://cbbsi28pvef0" path="res://HALLWAY.webp" id="1_c6w5i"]
 [ext_resource type="Texture2D" uid="uid://b6l54mkewufxx" path="res://blue-hallway-lockers.png" id="2_6ssfl"]
@@ -6,6 +6,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dnchc"]
 size = Vector2(74, 106)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5i43h"]
+size = Vector2(73.6357, 477.273)
 
 [node name="Background" type="Node2D"]
 
@@ -44,7 +47,60 @@ position = Vector2(-3840, -16)
 scale = Vector2(7.68, 7.04)
 texture = ExtResource("3_b7dh2")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Blue-hallway-no-door3"]
-position = Vector2(16.6667, 2.27273)
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Blue-hallway-no-door3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Blue-hallway-no-door3/CharacterBody2D"]
+position = Vector2(13.5417, 2.27273)
 scale = Vector2(0.130208, 0.142045)
 shape = SubResource("RectangleShape2D_dnchc")
+
+[node name="Door" type="Sprite2D" parent="."]
+position = Vector2(5152, -16)
+scale = Vector2(0.502857, 0.502857)
+texture = ExtResource("1_c6w5i")
+
+[node name="WINNER" type="Area2D" parent="Door"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door/WINNER"]
+position = Vector2(-270.455, 15.9091)
+shape = SubResource("RectangleShape2D_5i43h")
+disabled = true
+
+[node name="Blue-hallway-lockers3" type="Sprite2D" parent="."]
+position = Vector2(5888, -16)
+scale = Vector2(7.68, 7.04)
+texture = ExtResource("2_6ssfl")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Blue-hallway-lockers3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Blue-hallway-lockers3/CharacterBody2D"]
+position = Vector2(-32.2916, 2.38419e-07)
+scale = Vector2(0.130208, 0.142045)
+shape = SubResource("RectangleShape2D_dnchc")
+
+[node name="Blue-hallway-no-door4" type="Sprite2D" parent="."]
+position = Vector2(4416, -16)
+scale = Vector2(7.68, 7.04)
+texture = ExtResource("3_b7dh2")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(2144, -16)
+scale = Vector2(0.502857, 0.502857)
+texture = ExtResource("1_c6w5i")
+
+[node name="Blue-hallway-lockers4" type="Sprite2D" parent="."]
+position = Vector2(3648, -16)
+scale = Vector2(7.68, 7.04)
+texture = ExtResource("2_6ssfl")
+
+[node name="Blue-hallway-no-door5" type="Sprite2D" parent="."]
+position = Vector2(2880, -16)
+scale = Vector2(7.68, 7.04)
+texture = ExtResource("3_b7dh2")
+
+[node name="Blue-hallway-no-door6" type="Sprite2D" parent="."]
+position = Vector2(1408, -16)
+scale = Vector2(7.68, 7.04)
+texture = ExtResource("3_b7dh2")
+
+[connection signal="area_entered" from="Door/WINNER" to="Door" method="_on_winner_area_entered"]

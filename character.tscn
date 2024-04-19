@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b5fv402jfajl8"]
+[gd_scene load_steps=16 format=3 uid="uid://b5fv402jfajl8"]
 
 [ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_xrbev"]
 [ext_resource type="Texture2D" uid="uid://ruf3mdiv6m8j" path="res://chatbubble.png" id="3_gudef"]
@@ -57,6 +57,13 @@ size = Vector2(160, 20)
 [sub_resource type="Theme" id="Theme_dd0vt"]
 default_font = ExtResource("4_lbup2")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qgjlv"]
+size = Vector2(20, 34)
+
+[sub_resource type="Theme" id="Theme_lqptk"]
+default_base_scale = 0.44
+default_font = ExtResource("4_lbup2")
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_xrbev")
@@ -80,6 +87,7 @@ position = Vector2(48, -32)
 shape = SubResource("RectangleShape2D_ijir1")
 
 [node name="Chatbubble" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(130.125, -134.125)
 scale = Vector2(6.25834, 3.85833)
 texture = ExtResource("3_gudef")
@@ -95,11 +103,28 @@ disabled = true
 [node name="RichTextLabel" type="RichTextLabel" parent="Chatbubble/TextSizer/CollisionShape2D"]
 offset_left = -13.0
 offset_top = 41.0
-offset_right = 38.0
+offset_right = 44.0
 offset_bottom = 82.0
 theme = SubResource("Theme_dd0vt")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-text = "Move Please"
+text = "Move Please."
+
+[node name="WIN" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(103, -587)
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_qgjlv")
+disabled = true
+
+[node name="WinText" type="RichTextLabel" parent="WIN"]
+offset_left = -123.0
+offset_top = 137.667
+offset_right = 64.0
+offset_bottom = 219.667
+theme = SubResource("Theme_lqptk")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "You made it to class!"
+metadata/_edit_use_anchors_ = true
 
 [connection signal="body_entered" from="TalkCollision" to="." method="body_entered"]
 [connection signal="body_exited" from="TalkCollision" to="." method="body_exited"]
