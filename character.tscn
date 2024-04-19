@@ -88,6 +88,7 @@ shape = SubResource("RectangleShape2D_ijir1")
 
 [node name="Chatbubble" type="Sprite2D" parent="."]
 visible = false
+z_index = 1
 position = Vector2(130.125, -134.125)
 scale = Vector2(6.25834, 3.85833)
 texture = ExtResource("3_gudef")
